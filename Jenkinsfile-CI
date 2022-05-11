@@ -12,7 +12,7 @@ pipeline {
               }
          }
          stage ('nexus') {
-             when { anyOf { branch 'develop ; branch 'release' }}
+             when { anyOf { branch 'develop' ; branch 'release' }}
              steps {
                  nexusArtifactUploader artifacts: [[artifactId: 'my-app', classifier: '', file: 'target/sparkjava-hello-world-1.0.war', type: 'war']], credentialsId: 'nexus', groupId: 'ram', nexusUrl: '34.226.212.83:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'java', version: '$BUILD_NUMBER'
              }
